@@ -22,7 +22,7 @@ const resultOutput = document.getElementById("gre-result-output");
   let greArgumentPromptText = '';
 
 // Load prompt from backend
-  fetch('http://127.0.0.1:8000/hello/generate_prompt?test_type=GRE-ISSUE')
+  fetch('https://evaluatehub.onrender.com/hello/generate_prompt?test_type=GRE-ISSUE')
     .then(response => response.json())
     .then(data => {
       let prompt = data.prompt || 'Failed to load prompt.';

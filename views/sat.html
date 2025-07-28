@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SAT Essay - EvaluateHub</title>
+  <link rel="stylesheet" href="/css/style.css">
+   <link rel="icon" href="/images\logo1.png" type="image/png">
+  <script defer src="/js/sat.js"></script>
+  <style>
+body {
+  margin-top: 60px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+    textarea {
+      max-width: 850px;
+      width: 100%;
+      height: 300px;
+      margin: 20px 0;
+      padding: 10px;
+      font-size: 16px;
+      box-sizing: border-box;
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+        .container {
+      max-width: 1200px;
+      width: 100%;
+      padding: 40px 20px;
+      margin: 40px auto;
+      box-sizing: border-box;
+      text-align: center;
+    }
+
+    .status {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 10px;
+    }
+
+    #submit-btn {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: grey;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: not-allowed;
+      display: block;
+      justify-self: center;
+    }
+
+    #submit-btn.enabled {
+      background-color: green;
+      cursor: pointer;
+    }
+
+    #result-title {
+      margin-top: 40px;
+      text-align: center;
+      color: #175398;
+      font-weight: bolder;
+      font-size: 30px;
+    }
+
+    #result-box {
+      margin-top: 10px;
+      background-color: #f0f0f0;
+      padding: 20px;
+      border-radius: 8px;
+      display: block;
+      white-space: pre-wrap;
+      text-align: left;
+    }
+
+    #result-output {
+      font-size: 20px;
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+      text-align: justify;
+      line-height: 1.6;
+      white-space: pre-wrap;   /* Preserve line breaks and spacing */
+    }
+
+    #title {
+        color: #175398;
+        font-weight: bolder;
+        margin-bottom: 60px;
+    }
+
+    #timer {
+        color: rgb(128, 255, 0);
+    }
+
+    #word-count {
+        color: brown;
+    }
+
+    #result-output strong {
+    font-weight: bold;
+    font-size: 0.9rem;
+    }
+     .whyRubrics {
+      max-width: 800px;
+      max-height: 500px;
+  background-color: #f4f3ea;
+  padding: 40px 20px;
+  margin-top: 30px;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.whyContainer {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.whyHeading {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.whyIntro {
+  font-size: 15px;
+  margin-bottom: 20px;
+  color: #444;
+  line-height: 1.6;
+}
+
+.whyRubricList {
+  list-style-type: disc;
+  padding-left: 20px;
+  color: #555;
+  line-height: 1.8;
+}
+
+.whyRubricList li {
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+  </style>
+</head>
+<body class="sat_body">
+      <!-- ✅ Navbar -->
+  <nav>
+    <div class="logo">
+    <img src="/images\logo1.png" alt="EvaluateHub Logo">
+    <span>EvaluateHub</span>
+  </div>
+    <ul>
+      <li><a href="/">HOME</a></li>
+      <li><a href="/ielts">IELTS</a></li>
+      <li><a href="/gre">GRE</a></li>
+      <li><a href="/#about">About Us</a></li>
+      <li><a href="/#faq">FAQs</a></li>
+      <li><a href="/#contact">Contact</a></li>
+    </ul>
+  </nav>
+  <div class="container">
+    <h1 id="title">SAT Essay Evaluation</h1>
+    <h2 style="margin-bottom: 10px;">Essay Prompt</h2>
+    <p id="sat-prompt">Loading prompt...</p>
+
+    <div class="status">
+      <span id="timer">Time: 00:00</span>
+      <span id="word-count">Word Count: 0</span>
+      <span class="warning">Minimum: 400 words</span>
+    </div>
+
+    <textarea id="essay" placeholder="Start writing your SAT essay here..."></textarea>
+    <a href="#result-output" style="text-decoration: none;"><button id="submit-btn" disabled>Submit Essay</button></a>
+<!-- RUBRICS -->
+<section class="whyRubrics" id="whySATRubrics">
+  <div class="whyContainer">
+    <h2 class="whyHeading">Rubrics</h2>
+    <p class="whyIntro">
+      Your SAT essay will be evaluated based on five essential criteria. These are designed to reflect the standards of academic writing expected in college-level tests and practice exams. Each essay receives a single writing score between 1 and 8 based on the following elements:
+    </p>
+    <ul class="whyRubricList">
+      <li><strong>Command of Evidence:</strong> The relevance and strength of the examples and references used to support your analysis.</li>
+      <li><strong>Focus and Coherence:</strong> The clarity of your central idea and the logical flow and organization of your essay.</li>
+      <li><strong>Style and Formal Tone:</strong> Use of academic language, formal tone, and appropriate word choices without slang.</li>
+      <li><strong>Grammar and Usage:</strong> Accuracy in sentence structure, punctuation, and grammar throughout the response.</li>
+      <li><strong>Vocabulary & Sentence Variety:</strong> Use of varied sentence structures and vocabulary that enhances clarity and engagement.</li>
+    </ul>
+  </div>
+</section>
+
+
+    <!-- Label above result box -->
+    <h2 style="text-align: center; margin-top: 40px;" id="result-title">Evaluation Result</h2>
+    <div id="result-box">
+      <pre id="result-output">Waiting for response...</pre>
+    </div>
+
+  </div>
+  <footer class="footer" id="contact">
+  <div class="footer-container">
+    
+    <div class="footer-section">
+      <h4>Future Directions</h4>
+      <ul>
+        <li>📖 Reading Part Evaluation</li>
+        <li>🎧 Listening Part Evaluation</li>
+        <li>🗣️ Speaking Part Evaluation</li>
+      </ul>
+    </div>
+
+    <div class="footer-section">
+      <h4>Our Research</h4>
+      <ul>
+        <li>Logistic Regression | Random Forest</li>
+        <li>Support Vector Machines | LSTM</li>
+        <li>Transformers (BERT, RoBERTa) | DeepSeek</li>
+      </ul>
+    </div>
+
+    <div class="footer-section">
+      <h4>Technologies Used</h4>
+      <ul>
+        <li>Django | Node.js | Python</li>
+        <li>HTML | CSS | JavaScript</li>
+        <li>LLaMA 2 | Render & Netlify</li>
+      </ul>
+    </div>
+
+    <div class="footer-section">
+      <h4>Developers</h4>
+      <ul>
+        <li>Aleena Sajid</li>
+        <li>Sawaira Iqbal</li>
+        <li>Sameer Faisal</li>
+      </ul>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <strong>© 2025 EvaluateHub — Contact: im.aleena.sajid@gmail.com | 0324-6575243</strong>
+  </div>
+</footer>
+</body>
+</html>

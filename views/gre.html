@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>GRE Essays - EvaluateHub</title>
+  <link rel="stylesheet" href="/css/style.css">
+   <link rel="icon" href="/images\logo1.png" type="image/png">
+  <script defer src="/js/gre.js"></script>
+  <style>
+    html, body {
+      padding: 0;
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .gre-container {
+      max-width: 1200px;
+      width: 100%;
+      padding: 40px 20px;
+      margin-top: 100px;
+      box-sizing: border-box;
+      text-align: center;
+      background-color: white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  border-radius: 10px;
+    }
+
+    .gre-status {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 10px;
+    }
+
+    .gre-textarea {
+      width: 100%;
+      max-width: 100%;
+      height: 300px;
+      margin: 20px 0;
+      padding: 10px;
+      font-size: 16px;
+      box-sizing: border-box;
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+
+    #gre-submit-btn, #gre-done-btn {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: grey;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: not-allowed;
+      margin-top: 20px;
+    }
+
+    #gre-submit-btn.enabled, #gre-done-btn.enabled {
+      background-color: green;
+      cursor: pointer;
+    }
+
+    #gre-result-title {
+      margin-top: 40px;
+      text-align: center;
+      color: #175398;
+      font-weight: bolder;
+      font-size: 30px;
+    }
+
+    #gre-result-box {
+      overflow-y: auto;
+      max-height: 400px;
+      margin-top: 10px;
+      background-color: #f0f0f0;
+      padding: 20px;
+      border-radius: 8px;
+      display: block;
+      white-space: pre-wrap;
+      text-align: left;
+    }
+
+    #gre-result-output {
+      font-size: 20px;
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+      text-align: justify;
+      line-height: 1.6;
+      white-space: pre-wrap;
+    }
+
+    .gre-section {
+      text-align: left;
+      margin-top: 0px;
+      width: 100%;
+    }
+
+    .gre-section h2 {
+      text-align: center;
+    }
+
+    .gre-prompt {
+      font-style: italic;
+      text-align: center;
+    }
+
+    #gre-title {
+      color: #175398;
+      font-weight: bolder;
+      margin-bottom: 0px;
+    }
+
+    #gre-timer-issue, #gre-timer-argument {
+      color: rgb(128, 255, 0);
+    }
+
+    #gre-word-count-issue, #gre-word-count-argument {
+      color: brown;
+    }
+
+    #gre-result-output strong {
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+
+    .gre-whyRubrics {
+      max-width: 850px;
+      max-height: 500px;
+      background-color: #f4f3ea;
+      padding: 40px 20px;
+      margin-top: 30px;
+      box-sizing: border-box;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      overflow-wrap: break-word;
+    }
+
+    .gre-whyContainer {
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .gre-whyHeading {
+      text-align: center;
+      font-size: 28px;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .gre-whyIntro {
+      font-size: 15px;
+      margin-bottom: 20px;
+      color: #444;
+      line-height: 1.6;
+    }
+
+    .gre-whyRubricList {
+      list-style-type: disc;
+      padding-left: 20px;
+      color: #555;
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    .gre-whyRubricList li {
+      margin-bottom: 10px;
+      font-size: 15px;
+    }
+    .sec_h2{
+      font-size: 25px;
+      color: black;
+      margin: 0px;
+      padding: 0px;
+      text-align:center;
+    }
+  </style>
+</head>
+<body>
+  <!-- ✅ Navbar -->
+  <nav>
+    <div class="logo">
+      <img src="/images\logo1.png" alt="EvaluateHub Logo">
+      <span>EvaluateHub</span>
+    </div>
+    <ul>
+      <li><a href="/">HOME</a></li>
+      <li><a href="/ielts">IELTS</a></li>
+      <li><a href="/sat">SAT</a></li>
+      <li><a href="/#about">About Us</a></li>
+      <li><a href="/#faq">FAQs</a></li>
+      <li><a href="/#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="gre-container">
+    <h1 id="gre-title">GRE Essay Evaluation</h1>
+
+    <section class="gre-section">
+      <h2 class="sec_h2" style="margin-bottom: 10px;">Issue Essay Prompt</h2>
+      <p id="gre-issue-prompt" class="gre-prompt">Loading prompt...</p>
+      <div class="gre-status">
+        <span id="gre-timer-issue">Time: 00:00</span>
+        <span id="gre-word-count-issue">Word Count: 0</span>
+        <span class="gre-warning">Minimum: 500 words</span>
+      </div>
+      <textarea id="gre-essay-issue" class="gre-textarea" placeholder="Write your Issue Essay here..."></textarea>
+    </section>
+
+    <button id="gre-done-btn" disabled>Done</button>
+
+    <section class="gre-section">
+      <h2 class="sec_h2" style="margin-bottom: 10px;">Argument Essay Prompt</h2>
+      <p id="gre-argument-prompt" class="gre-prompt">Loading prompt...</p>
+      <div class="gre-status">
+        <span id="gre-timer-argument">Time: 00:00</span>
+        <span id="gre-word-count-argument">Word Count: 0</span>
+        <span class="gre-warning">Minimum: 500 words</span>
+      </div>
+      <textarea id="gre-essay-argument" class="gre-textarea" placeholder="Write your Argument Essay here..."></textarea>
+    </section>
+
+    <a href="#gre-result-output" style="text-decoration: none;"><button id="gre-submit-btn" disabled>Submit Both Essays</button></a>
+
+    <section class="gre-whyRubrics" id="whyGRERubrics">
+      <div class="gre-whyContainer">
+        <h2 class="gre-whyHeading">Rubrics</h2>
+        <p class="gre-whyIntro">
+          Your GRE Analytical Writing task is evaluated based on specific criteria that measure how effectively you can express complex ideas and critique arguments. Two types of essays Issue and Argument are scored separately and then averaged for a final score between 0 and 6.
+        </p>
+        <ul class="gre-whyRubricList">
+          <li><strong>Clarity and Logic of Ideas:</strong> How clearly and logically you present your position or analysis.</li>
+          <li><strong>Use of Reasoning & Evidence:</strong> The relevance and strength of examples, reasoning, and support for your claims.</li>
+          <li><strong>Organization and Coherence:</strong> Clear essay structure, logical flow, and appropriate transitions between ideas.</li>
+          <li><strong>Grammar and Vocabulary:</strong> Correct grammar and a varied, precise use of vocabulary to enhance clarity and style.</li>
+        </ul>
+      </div>
+    </section>
+
+    <h2 id="gre-result-title">Evaluation Result</h2>
+    <div id="gre-result-box">
+      <pre id="gre-result-output">Waiting for response...</pre>
+    </div>
+  </div>
+
+  <footer class="footer" id="contact">
+    <div class="footer-container">
+      <div class="footer-section">
+        <h4>Future Directions</h4>
+        <ul>
+          <li>📖 Reading Part Evaluation</li>
+          <li>🎧 Listening Part Evaluation</li>
+          <li>🗣️ Speaking Part Evaluation</li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h4>Our Research</h4>
+        <ul>
+          <li>Logistic Regression | Random Forest</li>
+          <li>Support Vector Machines | LSTM</li>
+          <li>Transformers (BERT, RoBERTa) | DeepSeek</li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h4>Technologies Used</h4>
+        <ul>
+          <li>Django | Node.js | Python</li>
+          <li>HTML | CSS | JavaScript</li>
+          <li>LLaMA 2 | Render & Netlify</li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h4>Developers</h4>
+        <ul>
+          <li>Aleena Sajid</li>
+          <li>Sawaira Iqbal</li>
+          <li>Sameer Faisal</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <strong>© 2025 EvaluateHub — Contact: im.aleena.sajid@gmail.com | 0324-6575243</strong>
+    </div>
+  </footer>
+</body>
+</html>

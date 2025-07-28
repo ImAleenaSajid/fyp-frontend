@@ -13,7 +13,7 @@ window.onload = () => {
 
   // Load prompt from backend
   // Load prompt from backend
-fetch('http://127.0.0.1:8000/hello/generate_prompt?test_type=IELTS')
+fetch('https://evaluatehub.onrender.com/hello/generate_prompt?test_type=IELTS')
   .then(response => response.json())
   .then(data => {
     let prompt = data.prompt || 'Failed to load prompt.';

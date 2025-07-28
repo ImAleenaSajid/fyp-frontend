@@ -53,7 +53,7 @@ const resultOutput = document.getElementById("gre-result-output");
     });
 
 // Load prompt from backend
-  fetch('http://127.0.0.1:8000/hello/generate_prompt?test_type=GRE-ARGUMENT')
+  fetch('https://evaluatehub.onrender.com/hello/generate_prompt?test_type=GRE-ARGUMENT')
     .then(response => response.json())
     .then(data => {
       let prompt = data.prompt || 'Failed to load prompt.';

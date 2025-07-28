@@ -29,7 +29,7 @@ app.post('/send-essay', async (req, res) => {
   const { essay, test_type, prompt } = req.body;
 
   try {
-    const response = await axios.post('http://127.0.0.1:8000/hello/receive_essay', {
+    const response = await axios.post('https://evaluatehub.onrender.com/hello/receive_essay', {
       essay,
       test_type,
       prompt
@@ -50,7 +50,7 @@ app.get('/generate_prompt', async (req, res) => {
   const { test_type } = req.query;
 
   try {
-    const response = await axios.get('http://127.0.0.1:8000/hello/generate_prompt?test_type=${test_type}');
+    const response = await axios.get('https://evaluatehub.onrender.com/hello/generate_prompt?test_type=${test_type}');
     res.json(response.data);
   } catch (error) {
     console.error("Error fetching prompt from Django:", error.message);

@@ -11,7 +11,7 @@ window.onload = () => {
   let satPromptText = '';
 
   // Load prompt from backend
-  fetch('http://127.0.0.1:8000/hello/generate_prompt?test_type=SAT')
+  fetch('https://evaluatehub.onrender.com/hello/generate_prompt?test_type=SAT')
     .then(response => response.json())
     .then(data => {
       let prompt = data.prompt || 'Failed to load prompt.'
